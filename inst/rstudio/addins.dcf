@@ -1,0 +1,4 @@
+Name: Reflow Lines
+Description: Reflow lines in a paragraph
+Binding: reflowLines
+Interactive: false
