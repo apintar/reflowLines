@@ -7,4 +7,5 @@ install.packages('devtools')
 devtools::install_github('rstudio/rstudioapi')
 devtools::install_github('Rexamine/stringi')
 devtools::install_github('hadley/stringr')
+devtools::install_github('apintar/reflowLines')
 ```
