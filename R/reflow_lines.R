@@ -23,7 +23,7 @@ reflowLines <- function () {
 
   # count leading white space
   lws <- nchar(tmp$contents[start_pos[1]]) -
-    nchar(stringr::str_trim(tmp$contents[start_pos[1]]))
+    nchar(stringr::str_trim(tmp$contents[start_pos[1]], side = 'left'))
   if (start_pos[1] == end_pos[1] && start_pos[2] == end_pos[2]){
 
     replacement_text <- my_wrap(tmp$contents[start_pos[1]], width = 70,
