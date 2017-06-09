@@ -17,7 +17,8 @@ my_wrap <- function (string, width = 80, indent = 0, exdent = 0) {
 #'
 reflowLines <- function () {
 
-  tmp <- rstudioapi::getActiveDocumentContext()
+  # tmp <- rstudioapi::getActiveDocumentContext()
+  tmp <- rstudioapi::getSourceEditorContext()
   start_pos <- tmp$selection[[1]]$range$start
   end_pos <- tmp$selection[[1]]$range$end
 
@@ -31,6 +32,7 @@ reflowLines <- function () {
     current_length <- nchar(tmp$contents[start_pos[1]])
     replacement_range <- rstudioapi::document_range(start = c(start_pos[1], 1),
                                                     end = c(start_pos[1], current_length + 1))
+    last_length <- current_length
   } else {
 
     if (nchar(tmp$contents[end_pos[1]]) == 0) {
@@ -58,4 +60,9 @@ reflowLines <- function () {
   rstudioapi::modifyRange(location = replacement_range,
                           text = replacement_text,
                           id = tmp$id)
+  tmp <- rstudioapi::getSourceEditorContext()
+  rstudioapi::setCursorPosition(position =
+  tmp$selection[[1]]$range$start,
+                                id = tmp$id)
+  
 }
